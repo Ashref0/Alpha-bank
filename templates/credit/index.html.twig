@@ -1,0 +1,62 @@
+{% extends '/frontoffice/basefront.html.twig' %}
+
+{% block title %}Credit index{% endblock %}
+{% block subtitle %}Credit {% endblock %}
+
+{% block content %}
+<section class="pt-125 pb-140 bg_white">
+    <div class="container">
+        <div class="row ">
+                <div class="section-title">
+        <h2 class="heading-decorated">Mes crédits ( {{credits|length}} )</h2>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Montant Payé</th>
+                <th>MontantEmprunte</th>
+                <th>Mensualité</th>
+                <th>TauxInteret</th>
+                <th>NbMois</th>
+                <th>DateEmission</th>
+                <th>DateEcheance</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for credit in credits %}
+            <tr>
+                <td> {{ credit.Type }}</td>
+                <td>{{ credit.MontantPaye }} / {{ credit.Montant }}</td>
+                <td>{{ credit.MontantEmprunte }}</td>
+                <td>{{ credit.Mensualite }}</td>
+                <td>{{ credit.TauxInteret }} %</td>
+                <td>{{ credit.NbMois }} Mois</td>
+                <td>{{ credit.DateEmission ? credit.DateEmission|date('Y-m-d') : '' }}</td>
+                <td>{{ credit.DateEcheance ? credit.DateEcheance|date('Y-m-d') : '' }}</td>
+                <td>{{ credit.Status }}</td>
+                <td>
+                    <a class="btn btn-block btn-outline-primary" href="{{ path('app_credit_show', {'id': credit.id}) }}">Show</a>
+                    <a class="btn btn-block btn-outline-primary" href="{{ path('app_credit_pdf', {'id': credit.id}) }}">Pdf</a>
+                    {% if credit.Status == 'Accepté' %}
+                    <a class="btn btn-block btn-outline-primary" href="{{ path('app_remboursement_list', {'idcredit': credit.id}) }}">Liste </a>
+                    {% endif %}
+                    {#  <a href="{{ path('app_credit_edit', {'id': credit.id}) }}">Edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                    <a style="max-width: 300px;" class="btn btn-block btn-info" href="{{ path('app_credit_new') }}">Nouveau Credit</a>
+                </div>
+            </div>
+    </div>
+
+</section>
+{% endblock %}

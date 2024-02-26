@@ -1,0 +1,20 @@
+{% extends '/frontoffice/basefront.html.twig' %}
+
+{% block title %}Remboursement index{% endblock %}
+{% block subtitle %}Remboursement {% endblock %}
+
+{% block content %}
+<<section class="pt-125 pb-140 bg_white">
+    <div class="container">
+        <div class="row ">
+            <div class="section-title">
+                <h2 class="heading-decorated">Nouveau Remboursement</h2>
+
+    {{ include('remboursement/_form.html.twig') }}
+
+    <a style="max-width: 300px;" class="btn btn-block btn-outline-info" href="{{ path('app_remboursement_index') }}">Back to list</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

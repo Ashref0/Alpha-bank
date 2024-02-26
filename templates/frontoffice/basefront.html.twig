@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('frontoffice/img/favicon.png') }}" type="image/x-icon">
+
+    {% block stylesheets %}
+        <!-- CSS here -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/bootstrap.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/elegant-icons.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/all.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/slick.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/slick-theme.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/nice-select.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/default.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/style.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('frontoffice/css/responsive.css') }}" media="all" />
+    {% endblock %}
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="ctn-preloader" class="ctn-preloader">
+        <div class="round_spinner">
+            <div class="spinner"></div>
+            <div class="text">
+                <img src="{{ asset('frontoffice/img/logo/Logo-2.png') }}" alt="">
+            </div>
+        </div>
+        <h2 class="head">Did You Know?</h2>
+        <p></p>
+    </div>
+</div>
+<!-- Header -->
+<header class="header">
+    <div class="header-menu header-menu-4" id="sticky">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <a class="navbar-brand sticky_logo" href="index.html">
+                    <img class="main" src="{{ asset('frontoffice/img/logo/Logo.png') }}" srcset="{{ asset('frontoffice/img/logo/Logo@2x.png') }} 2x" alt="logo">
+                    <img class="sticky" src="{{ asset('frontoffice/img/logo/Logo-2.png') }}" srcset="{{ asset('frontoffice/img/logo/Logo-2@2x.png') }} 2x" alt="logo">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="menu_toggle">
+                            <span class="hamburger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                            <span class="hamburger-cross">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </span>
+                </button>
+
+                <div class="collapse navbar-collapse right-nav" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ms-auto">
+                        <li class="nav-item dropdown submenu ">
+                            <a href="#" class="nav-link dropdown-toggle active" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true"
+                               data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item "><a href="index.html" class="nav-link active">Smart Finance</a>
+                                </li>
+                                <li class="nav-item"><a href="index-company.html" class="nav-link ">Loan Company</a>
+                                </li>
+                                <li class="nav-item"><a href="index-app.html" class="nav-link">Mobile App</a>
+                                </li>
+                                <li class="nav-item"><a href="index-simple.html" class="nav-link ">Simple Banca</a>
+                                </li>
+                                <li class="nav-item"><a href="index-loan.html" class="nav-link">Loan Steps</a>
+                                </li>
+                                <li class="nav-item"><a href="index-finance.html" class="nav-link">Finance Sass App</a>
+                                </li>
+                                <li class="nav-item"><a href="index-small-bank.html" class="nav-link">Small Bank</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a class="nav-link dropdown-toggle" href="loan.html" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Loan
+                            </a>
+                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                               data-bs-toggle="dropdown"></i>
+
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="loan.html">Get loan</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" role="button"
+                                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loan
+                                        Application</a>
+                                    <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                                       data-bs-toggle="dropdown"></i>
+
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="loan-details.html">Step
+                                                01</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="personal-details.html">Step
+                                                02</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="document-upload.html">Step
+                                                03</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a class="nav-link dropdown-toggle" href="career.html" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Job Pages
+                            </a>
+                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                               data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                                <li class="nav-item"><a class="nav-link" href="job-post.html">Jobs</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="job-application.html">Job
+                                        Application</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                Pages
+                            </a>
+                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                               data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu ">
+                                <li class="nav-item"><a class="nav-link" href="card.html">Cards</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="error.html">404 Error</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown submenu">
+                            <a class="nav-link dropdown-toggle" href="blog.html" role="button"
+                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Blog
+                            </a>
+                            <i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="false"
+                               data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu ">
+                                <li class="nav-item"><a class="nav-link" href="blog.html">Blog Listing</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog-details.html">Blog Details</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a class="theme-btn theme-btn-rounded-2 theme-btn-alt"
+                       href="https://themeforest.net/item/banca-banking-business-loan-bootstrap5html-website-template/32788885?s_rank=9"
+                       target="_blank">
+                        Buy Banca
+                    </a>
+                    <div class="px-2 js-darkmode-btn" title="Toggle dark mode">
+                        <label for="something" class="tab-btn tab-btns">
+                            <ion-icon name="moon"></ion-icon>
+                        </label>
+                        <label for="something" class="tab-btn">
+                            <ion-icon name="sunny"></ion-icon>
+                        </label>
+                        <label class=" ball" for="something"></label>
+                        <input type="checkbox" name="something" id="something" class="dark_mode_switcher">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- Header end-->
+
+
+<main>
+    <section class="breadcrumb-area">
+        <div class="breadcrumb-widget pt-200 pb-110" style="background-image: url({{ asset('frontoffice/img/breadcrumb/bg-1.png') }});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-content pt-85">
+                            <h1>  {% block subtitle %} {% endblock %} </h1>
+                            <ul>
+                                <li><a href="index.html">home</a></li>
+                                <li><a href="index.html">pages</a></li>
+                                <li>loan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- footer -->
+<footer class="footer footer-3">
+    <div class="footer-top  pt-200 pb-lg-115 pb-120">
+        <div class="container">
+            <div class="row gx-0 pt-60 ">
+
+                <div class="col-lg-4 col-sm-6 text-center text-sm-start ms-0 ">
+                    <div class="footer-widget wow fadeInLeft mb-30">
+                        <div class="footer-text mb-20">
+                            <p>Banca is a leading bank in the worldzone and a prominent international banking
+                                institution</p>
+                        </div>
+
+                        <span class="overline">COTATION</span>
+
+                        <div class="footer-bold">
+                            <span class="counter">$<span>35.105</span> </span>
+                            <span class="counter">-<span>0.46</span>% </span>
+                        </div>
+                        <p class="time">2021-01-05 14:00 (INTERNATIONAL TIME)</p>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-sm-6 text-center text-sm-start ms-lg-5 ">
+                    <div class="footer-widget mb-30 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="f-widget-title">
+                            <h5>Banca at a Glance</h5>
+                        </div>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="#"> Our core Businesses
+                                    </a></li>
+                                <li><a href="#"> Our 'company purpose'</a></li>
+                                <li><a href="#"> Jobs & Careers</a></li>
+                                <li><a href="#"> Our Responsibility</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2  col-sm-6 text-center text-sm-start ms-lg-5">
+                    <div class="footer-widget mb-30 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="f-widget-title">
+                            <h5>Publications</h5>
+                        </div>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="#"> Compliance Publications</a></li>
+                                <li><a href="#"> Annual Reports</a></li>
+                                <li><a href="#"> CSR Reports</a></li>
+                                <li><a href="#"> Financial documentation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-sm-6 text-center text-sm-start me-0 ms-lg-5">
+                    <div class="footer-widget mb-30 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="f-widget-title">
+                            <h5>Direct Access</h5>
+                        </div>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="#">Our news</a></li>
+                                <li><a href="#">Our press releases</a></li>
+                                <li><a href="#">Our job offers</a></li>
+                                <li><a href="#">Our websites</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- copyright area -->
+    <div class="copyright pt-25 pb-25">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3 text-center text-lg-start">
+                    <a href="index.html" class="p-0 m-0"><img src="{{ asset('frontoffice/img/logo/Logo.png') }}" alt="logo"></a>
+                </div>
+                <div class="col-lg-5 text-center my-3 my-sm-0">
+                    <div class="copyright-text">
+                        <p>Copyright&copy; Banca 2023. <br class="d-sm-none"> <a class="ms-2" href="#">Privecy</a> |
+                            <a class="ms-0" href="#">Term of
+                                Use</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end ">
+                    <div class="social-button">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer end -->
+
+<!-- Back to top button -->
+<a id="back-to-top" title="Back to Top"></a>
+
+{% block javascripts %}
+    <!-- JS here -->
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/preloader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery.smoothscroll.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery.waypoints.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery.counterup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery.nice-select.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/parallax.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/jquery.parallax-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/wow.min.js') }}"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script type="text/javascript" src="{{ asset('frontoffice/js/custom.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>

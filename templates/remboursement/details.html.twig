@@ -1,0 +1,16 @@
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ remboursement.id }}</td>
+    </tr>
+    <tr>
+        <th>Montant</th>
+        <td>{{ remboursement.Montant }}</td>
+    </tr>
+    <tr>
+        <th>DateRemboursement</th>
+        <td>{{ remboursement.DateRemboursement ? remboursement.DateRemboursement|date('Y-m-d') : '' }}</td>
+    </tr>
+    </tbody>
+</table>
