@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h3 class="mt-5 mb-5">Update Form</h3>
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div class="col-md-6 offset-md-3">
+            {{ form_start(form) }}
+                <div class="form-group">
+                    <label for="date_transaction">Date Transaction</label>
+                    {{ form_widget(form.date_transaction,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <label for="nom_destinataire">Nom Destinataire</label>
+                    {{ form_widget(form.nom_destinataire,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <label for="prenom_destinataire">Prénom Destinataire</label>
+                    {{ form_widget(form.prenom_destinataire,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <label for="iban_destinataire">IBAN Destinataire</label>
+                    {{ form_widget(form.iban_destinataire,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <label for="montant">Montant</label>
+                    {{ form_widget(form.montant,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <label for="client">Client</label>
+                    {{ form_widget(form.client,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info mt-2 text-white">Update</button>
+                </div>
+            {{ form_end(form)}}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

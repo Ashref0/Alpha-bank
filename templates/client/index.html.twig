@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un client{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.cin) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.solde) }}
+        {{ form_row(form.iban) }}
+
+        <button type="submit">Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}
