@@ -1,0 +1,146 @@
+{% extends '/backoffice/baseback.html.twig' %}
+
+{% block title %}Credit index{% endblock %}
+
+{% block content %}
+<main>
+    <section class="section-md bg-default decor-text" data-content="Review">
+        <div class="container">
+                <h2 class="heading-decorated">Mes crédits ({{ credits|length }})</h2>
+
+            <div style="display: flex; justify-content: space-between;">
+
+                <div style="width: 48%; height: 400px;">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div style="width: 48%; height: 400px;">
+                    <canvas id="myChart1"></canvas>
+                </div>
+
+            </div>
+
+
+            <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Montant Payé</th>
+                        <th>MontantEmprunte</th>
+                        <th>TauxInteret</th>
+                        <th>NbMois</th>
+                        <th>DateEmission</th>
+                        <th>DateEcheance</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for credit in credits %}
+                        <tr>
+                            <td> {{ credit.Type }}</td>
+                            <td>{{ credit.MontantPaye }} / {{ credit.Montant }}</td>
+                            <td>{{ credit.MontantEmprunte }}</td>
+                            <td>{{ credit.TauxInteret }} %</td>
+                            <td>{{ credit.NbMois }} Mois</td>
+                            <td>{{ credit.DateEmission ? credit.DateEmission|date('Y-m-d') : '' }}</td>
+                            <td>{{ credit.DateEcheance ? credit.DateEcheance|date('Y-m-d') : '' }}</td>
+                            <td>{{ credit.Status }}</td>
+                            <td>
+                                <a class="btn btn-block btn-outline-primary" href="{{ path('app_credit_showback', {'id': credit.id}) }}">Show</a>
+                                {% if credit.Status == 'En attente' %}
+                                    <a class="btn btn-block btn-outline-success" href="{{ path('app_accept_credit', {'idcredit': credit.id}) }}">Accept</a>
+                                    <a class="btn btn-block btn-outline-danger" href="{{ path('app_refuse_credit', {'idcredit': credit.id}) }}">Refus</a>
+                                {% endif %}
+                                {% if credit.Status == 'Accepté' %}
+                                <a class="btn btn-block btn-outline-primary" href="{{ path('app_remboursement_listback', {'idcredit': credit.id}) }}">Liste </a>
+                                {% endif %}
+                                {#  <a href="{{ path('app_credit_edit', {'id': credit.id}) }}">Edit</a> #}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="11">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+</section>
+</main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx1 = document.getElementById('myChart1');
+        const creditStatusCounts = {
+            'En attente': 0,
+            'Refusé': 0,
+            'Accepté': 0,
+            'Fermé': 0
+        };
+
+        {% for credit in credits %}
+        creditStatusCounts['{{ credit.Status }}']++;
+        {% endfor %}
+
+        const creditStatusLabels = Object.keys(creditStatusCounts);
+        const creditStatusData = Object.values(creditStatusCounts);
+
+        new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: creditStatusLabels,
+                datasets: [{
+                    label: 'Reclamations Status',
+                    data: creditStatusData,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+            }
+        });
+    </script>
+
+    {% set creditMonthCounts = {} %}
+
+    {% for credit in credits %}
+        {% set monthYear = credit.DateDemande|date("Y-m") %}
+        {% set creditMonthCounts = creditMonthCounts|merge({ (monthYear): (creditMonthCounts[monthYear] ?? 0) + 1 }) %}
+    {% endfor %}
+
+    <script>
+
+            const creditMonthCountsData = {{ creditMonthCounts|json_encode|raw }};
+            const ctx2 = document.getElementById('myChart2');
+
+            const creditMonthLabels = Object.keys(creditMonthCountsData);
+            const creditMonthData = Object.values(creditMonthCountsData);
+
+            console.log(creditMonthData);
+
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: creditMonthLabels,
+                    datasets: [{
+                        label: '# Nombre de credits par mois',
+                        data: creditMonthData,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+    </script>
+
+{% endblock %}

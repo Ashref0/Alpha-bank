@@ -1,0 +1,48 @@
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ credit.id }}</td>
+    </tr>
+    <tr>
+        <th>Montant</th>
+        <td>{{ credit.Montant }}</td>
+    </tr>
+    <tr>
+        <th>MontantEmprunte</th>
+        <td>{{ credit.MontantEmprunte }}</td>
+    </tr>
+    <tr>
+        <th>DateDemande</th>
+        <td>{{ credit.DateDemande ? credit.DateDemande|date('Y-m-d') : '' }}</td>
+    </tr>
+    <tr>
+        <th>TauxInteret</th>
+        <td>{{ credit.TauxInteret }}</td>
+    </tr>
+    <tr>
+        <th>NbMois</th>
+        <td>{{ credit.NbMois }}</td>
+    </tr>
+    <tr>
+        <th>DateEmission</th>
+        <td>{{ credit.DateEmission ? credit.DateEmission|date('Y-m-d') : '' }}</td>
+    </tr>
+    <tr>
+        <th>DateEcheance</th>
+        <td>{{ credit.DateEcheance ? credit.DateEcheance|date('Y-m-d') : '' }}</td>
+    </tr>
+     <tr>
+        <th>ImageCin</th>
+        <td><img src="{{vich_uploader_asset(credit,'imageFile')}}" height="300" width="300" alt="Img"></td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ credit.Status }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ credit.Description }}</td>
+    </tr>
+    </tbody>
+</table>

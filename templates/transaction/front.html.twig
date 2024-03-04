@@ -1,0 +1,50 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success mt-4 mb-b>
+        {{message}}
+    </div>
+{% endfor %}
+<table class="table">
+  <head>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">date_transaction</th>
+      <th scope="col">nom_destinataire</th>
+      <th scope="col">prenom_destinataire</th>
+      <th scope="col">iban_destinataire</th>
+      <th scope="col">montant</th>
+      <th scope="col">iban</th>
+      <th scope="col">client</th>
+      <th scope="col">clientdestinataire</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in list %}
+    <tr>
+      <th scope="row">{{ data.id }}</th>
+          <td>{{ data.dateTransaction|date('Y-m-d') }}</td>
+          <td>{{ data.nomDestinataire }}</td>
+          <td>{{ data.prenomDestinataire }}</td>
+          <td>{{ data.ibanDestinataire }}</td>
+          <td>{{ data.montant }}</td>
+          <td>{{ data.iban }}</td>
+          <td>{{ data.client.nom }}</td>
+          <td>{{ data.client.nom }}</td>
+           <td>
+<a href="{{ path('pdf', {'id': data.id}) }}" >
+<img src="{{ asset('pdf.png') }}"  style="width:40px;height:40px;border:0">
+                                        </a>        </td>
+    </tr>
+
+        
+        
+    </tr>  
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

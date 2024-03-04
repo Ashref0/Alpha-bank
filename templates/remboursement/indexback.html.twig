@@ -1,0 +1,44 @@
+{% extends '/backoffice/baseback.html.twig' %}
+
+{% block title %}Credit index{% endblock %}
+
+{% block content %}
+<main>
+    <section class="section-md bg-default decor-text" data-content="Review">
+        <div class="container">
+                <h2 class="heading-decorated">Mes Remboursements de credit ( {{remboursements|length}} )</h2>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Montant</th>
+                        <th>DateRemboursement</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for remboursement in remboursements %}
+                        <tr>
+                            <td>{{ remboursement.id }}</td>
+                            <td>{{ remboursement.Montant }}</td>
+                            <td>{{ remboursement.DateRemboursement ? remboursement.DateRemboursement|date('Y-m-d') : '' }}</td>
+                            <td>
+                                <a class="btn btn-block btn-outline-primary" href="{{ path('app_remboursement_showback', {'id': remboursement.id}) }}">Show</a>
+                                {# <a href="{{ path('app_remboursement_edit', {'id': remboursement.id}) }}">edit</a> #}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a style="max-width: 300px;" class="btn btn-block btn-outline-info" href="{{ path('app_credit_indexback') }}">Back to credits list </a>
+
+            </div>
+</section>
+</main>
+    {# <a href="{{ path('app_remboursement_new') }}">Create new</a>#}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Transaction{% endblock %}
+
+{% block body %}
+    <div class="col-md-6 offest-md-3">
+        {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date,{'attr':{'class':'form-control'}})}}
+            </div>
+             <div class="form-group">
+                {{ form_label(form.iban) }}
+                {{ form_widget(form.iban,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.operation) }}
+                {{ form_widget(form.operation,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.debit) }}
+                {{ form_widget(form.debit,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.credit) }}
+                {{ form_widget(form.credit,{'attr':{'class':'form-control'}})}}
+            </div>
+            <button type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'baseback.html.twig' %}
+
+
+{% block title %}CarteBancaire index{% endblock %}
+
+{% block body %}
+    <h1>CarteBancaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_carte</th>
+                <th>Date_Exp</th>
+                <th>Cvv</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_bancaire in carte_bancaires %}
+            <tr>
+                <td>{{ carte_bancaire.id }}</td>
+                <td>{{ carte_bancaire.NumCarte }}</td>
+                <td>{{ carte_bancaire.DateExp ? carte_bancaire.DateExp|date('Y-m-d') : '' }}</td>
+                <td>{{ carte_bancaire.cvv }}</td>
+                <td>
+                    <a href="{{ path('app_carte_bancaire_show', {'id': carte_bancaire.id}) }}">show</a>
+                    <a href="{{ path('app_carte_bancaire_edit', {'id': carte_bancaire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_carte_bancaire_new') }}">Create new</a>
+{% endblock %}

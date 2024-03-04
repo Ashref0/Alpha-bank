@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success mt-4 mb-b>
+        {{message}}
+    </div>
+{% endfor %}
+<table class="table">
+  <head>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">date</th>
+      <th scope="col">iban</th>      
+      <th scope="col">operation</th>
+      <th scope="col">debit</th>
+      <th scope="col">credit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in list %}
+    <tr>
+      <th scope="row">{{ data.id }}</th>
+          <td>{{ data.date|date('Y-m-d') }}</td>
+          <td>{{ data.iban }}</td>
+          <td>{{ data.operation }}</td>        
+          <td>{{ data.debit }}</td>
+          <td>{{ data.credit }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

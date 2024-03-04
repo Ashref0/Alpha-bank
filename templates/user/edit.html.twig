@@ -1,0 +1,20 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+    
+
+   <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col">
+                <h1 align="center">Edit Profile</h1>
+
+                {{ include('user/_form.html.twig') }}
+                <a href="{{ path('app_user_index') }}"><input class="wow fadeInUp mt-50 theme-btn theme-btn-rounded-2 theme-btn-lg theme-btn-alt" type="button" value="back to list"></a>
+                {{ include('user/_delete_form.html.twig', {'button_label': 'Delete'}) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

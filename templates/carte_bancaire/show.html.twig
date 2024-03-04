@@ -1,0 +1,60 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}CarteBancaire{% endblock %}
+
+{% block body %}
+    <h1>CarteBancaire</h1>
+
+  <div class="row">
+    <div class="col-6">
+  
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_bancaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Num_carte</th>
+                <td>{{ carte_bancaire.NumCarte }}</td>
+            </tr>
+            <tr>
+                <th>Date_Exp</th>
+                <td>{{ carte_bancaire.DateExp ? carte_bancaire.DateExp|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cvv</th>
+                <td>{{ carte_bancaire.cvv }}</td>
+            </tr>
+            {# Display the Freeze or Unfreeze button based on the isFrozen status #}
+            <tr>
+                <th class="mt-5">Status</th>
+                <td>
+                    {% if carte_bancaire.isFrozen %}
+                        <a href="{{ path('carte_bancaire_unfreeze', {'id': carte_bancaire.id}) }}" class="btn btn-primary">Unfreeze</a>
+                        <div><div class="alert alert-danger" role="alert">The card is frozen, sorry can't show you the QR.</div>
+</div>
+                    {% else %}
+                        <a href="{{ path('carte_bancaire_freeze', {'id': carte_bancaire.id}) }}" class="btn btn-danger">Freeze</a>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+    {# Display the QR code if the card is not frozen #}
+    {% if not carte_bancaire.isFrozen %}
+    <div class="col-6">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data={{ carte_bancaire.NumCarte }}%0D%0A{{ carte_bancaire.DateExp ? carte_bancaire.DateExp|date('Y-m') : '' }}%0D%0A{{ carte_bancaire.cvv }}" width="250px" height="auto"/>
+    </div>
+    {% endif %}
+  </div>
+
+    <a class="btn btn-primary" href="{{ path('app_carte_bancaire_index') }}">back to list</a>
+
+    <a class="btn btn-info" href="{{ path('app_carte_bancaire_edit', {'id': carte_bancaire.id}) }}">edit</a>
+
+    {{ include('carte_bancaire/_delete_form.html.twig') }}
+{% endblock %}

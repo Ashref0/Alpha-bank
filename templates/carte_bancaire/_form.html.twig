@@ -1,0 +1,21 @@
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+{% for field in form %}
+  <div class="mb-3">
+    {{ form_row(field, {
+      'label_attr': {'class': 'form-label'},
+      'attr': {'class': 'form-control'},
+      'error_bubbling': true
+    }) }}
+    {# Check if there are errors and display the first one #}
+    {% if field.vars.errors|length > 0 %}
+      <div class="invalid-feedback d-block">
+        {{ field.vars.errors|first.message }}
+      </div>
+    {% endif %}
+  </div>
+{% endfor %}
+
+<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

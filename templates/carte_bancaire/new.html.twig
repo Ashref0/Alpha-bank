@@ -1,0 +1,18 @@
+{% extends 'baseback.html.twig' %}
+
+
+{% block title %}New CarteBancaire{% endblock %}
+
+{% block body %}
+
+<style>
+#carte_bancaire_Date_Exp_day{
+    display:none;
+}
+</style>
+    <h1>Create new Credit Card</h1>
+
+    {{ include('carte_bancaire/_form.html.twig') }}
+
+    <a class="btn btn-dark" href="{{ path('app_carte_bancaire_index') }}">back to list</a>
+{% endblock %}
